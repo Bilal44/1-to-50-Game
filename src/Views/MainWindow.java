@@ -40,7 +40,7 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() throws IOException {
         initComponents();
         startGame();
-        ReadWriteSB.SBReadFile(jTableSB);  
+        ReadWriteSB.SBReadFile(jTableSB);
     }
 
     public void startGame() {
@@ -100,7 +100,7 @@ public class MainWindow extends javax.swing.JFrame {
         String playerName = JOptionPane.showInputDialog(null, "You finished the game in " + jLabelTimer.getText() + " , please enter your name", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
         if (playerName == null || playerName.trim().isEmpty()) {
         } else {
-            ScoreBoard.addScore(playerName, jLabelTimer,mistakeCount, jTableSB);
+            ScoreBoard.addScore(playerName, jLabelTimer, mistakeCount, jTableSB);
             ReadWriteSB.SBWriteFile(jTableSB);
         }
     }
@@ -616,7 +616,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
-        if ("Start Game".equals(jButtonStart.getText())) {
+        if (jButtonStart.getText().equals("Start Game")) {
             isPaused = false;
             Timer.startTimer();
             jButtonStart.setText("Pause Game");
@@ -624,7 +624,6 @@ public class MainWindow extends javax.swing.JFrame {
             for (JButton b : btnNumber) {
                 b.setEnabled(true);
             }
-
         } else {
             isPaused = true;
             Timer.startTimer();
@@ -646,11 +645,9 @@ public class MainWindow extends javax.swing.JFrame {
         resetGame = true;
         Timer.startTimer();
         arrCorrectOrder.clear();
-        
-        if (!btnNumber[23].isVisible()) {
-            for (JButton b : btnNumber) {
-                b.setVisible(true);
-            }
+
+        for (JButton b : btnNumber) {
+            b.setVisible(true);
         }
         startGame();
         jButtonStart.setText("Start Game");
